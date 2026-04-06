@@ -1,0 +1,18 @@
+# Zig build output
+zig-out/
+.zig-cache/
+
+# SDL2 development files (download with setup-sdl2.ps1)
+sdl2/
+
+# Test artifacts
+test/*.exe
+test/*.dll
+test/*.as
+test/*.bak
+test/packfile
+test/start.ax
+
+# IDE
+.vscode/
+*.swp

@@ -1,0 +1,71 @@
+// test_gamepad.hsp - Gamepad Library Test
+	onerror goto *dll_error
+
+#include "gamepad.as"
+
+	screen 0, 640, 480
+	title "Gamepad Test"
+
+	GPINIT
+	num_controllers = stat
+
+	if num_controllers < 0 {
+		dialog "gamepad.dll ‚Ì‰Šú‰»‚ÉŽ¸”s‚µ‚Ü‚µ‚½", 1, "ƒGƒ‰["
+		end
+	}
+
+	mes "Controllers found: " + num_controllers
+	onerror 0
+
+*main
+	redraw 0
+	color 255, 255, 255 : boxf
+	color 0, 0, 0
+	pos 10, 10
+
+	GPPOLL
+	state = 0
+	GPGETJOYSTATE state, 0
+
+	mes "=== D-Pad ==="
+	mes "  Up: " + GPBITCHECK(state, GP_DPAD_UP) + "  Down: " + GPBITCHECK(state, GP_DPAD_DOWN)
+	mes "  Left: " + GPBITCHECK(state, GP_DPAD_LEFT) + "  Right: " + GPBITCHECK(state, GP_DPAD_RIGHT)
+	mes ""
+
+	mes "=== Buttons ==="
+	mes "  A: " + GPBITCHECK(state, GP_BTN_A) + "  B: " + GPBITCHECK(state, GP_BTN_B)
+	mes "  X: " + GPBITCHECK(state, GP_BTN_X) + "  Y: " + GPBITCHECK(state, GP_BTN_Y)
+	mes "  LB: " + GPBITCHECK(state, GP_BTN_LB) + "  RB: " + GPBITCHECK(state, GP_BTN_RB)
+	mes "  LT: " + GPBITCHECK(state, GP_BTN_LT) + "  RT: " + GPBITCHECK(state, GP_BTN_RT)
+	mes "  Start: " + GPBITCHECK(state, GP_BTN_START) + "  Back: " + GPBITCHECK(state, GP_BTN_BACK)
+	mes "  L3: " + GPBITCHECK(state, GP_BTN_L3) + "  R3: " + GPBITCHECK(state, GP_BTN_R3)
+	mes ""
+
+	mes "=== Left Stick ==="
+	mes "  Up: " + GPBITCHECK(state, GP_LSTICK_UP) + "  Down: " + GPBITCHECK(state, GP_LSTICK_DOWN)
+	mes "  Left: " + GPBITCHECK(state, GP_LSTICK_LEFT) + "  Right: " + GPBITCHECK(state, GP_LSTICK_RIGHT)
+	mes ""
+
+	mes "=== Right Stick ==="
+	mes "  Up: " + GPBITCHECK(state, GP_RSTICK_UP) + "  Down: " + GPBITCHECK(state, GP_RSTICK_DOWN)
+	mes "  Left: " + GPBITCHECK(state, GP_RSTICK_LEFT) + "  Right: " + GPBITCHECK(state, GP_RSTICK_RIGHT)
+	mes ""
+
+	// Analog values
+	lx = 0 : ly = 0 : rx = 0 : ry = 0
+	GPGETSTICK lx, ly, rx, ry, 0
+	mes "=== Analog ==="
+	mes "  L: X=" + lx + " Y=" + ly
+	mes "  R: X=" + rx + " Y=" + ry
+
+	lt = 0 : rt = 0
+	GPGETTRIGGER lt, rt, 0
+	mes "  Trigger: L=" + lt + " R=" + rt
+
+	redraw 1
+	await 16
+	goto *main
+
+*dll_error
+	dialog "DLL error: " + wparam + ": " + refstr, 1, "Error"
+	end
