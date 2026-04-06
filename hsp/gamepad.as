@@ -3,7 +3,7 @@
 #ifndef __GAMEPAD_AS__
 #define __GAMEPAD_AS__
 
-#uselib "gamepad.dll"
+#uselib "hsp-sdl2-gamepad.dll"
 
 #func GPINIT "GPINIT"
 #func GPEND "GPEND"

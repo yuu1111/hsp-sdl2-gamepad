@@ -10,7 +10,7 @@
 	num_controllers = stat
 
 	if num_controllers < 0 {
-		dialog "gamepad.dll ‚Ì‰Šú‰»‚ÉŽ¸”s‚µ‚Ü‚µ‚½", 1, "ƒGƒ‰["
+		dialog "hsp-sdl2-gamepad.dll ‚Ì‰Šú‰»‚ÉŽ¸”s‚µ‚Ü‚µ‚½", 1, "ƒGƒ‰["
 		end
 	}
 

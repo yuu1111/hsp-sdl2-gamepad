@@ -4,14 +4,14 @@ HSP用のSDL2ベースゲームパッドラッパーDLL。
 
 ## 必要なファイル
 
-- `gamepad.dll` - 本ライブラリ
+- `hsp-sdl2-gamepad.dll` - 本ライブラリ
 - `SDL2.dll` - SDL2ランタイム（同じフォルダに配置）
 
 ## ビルド
 
 ```powershell
 zig build -Doptimize=ReleaseFast
-# zig-out/bin/ に gamepad.dll が生成される
+# zig-out/bin/ に hsp-sdl2-gamepad.dll が生成される
 ```
 
 ## API
