@@ -1,4 +1,4 @@
-# gamepad - SDL2 GameController Wrapper for HSP
+# hsp-sdl2-gamepad
 
 HSP用のSDL2ベースゲームパッドラッパーDLL。
 
@@ -10,9 +10,8 @@ HSP用のSDL2ベースゲームパッドラッパーDLL。
 ## ビルド
 
 ```powershell
-cd lib/gamepad
 zig build -Doptimize=ReleaseFast
-cp zig-out/bin/gamepad.dll ../../bin/debug/
+# zig-out/bin/ に gamepad.dll が生成される
 ```
 
 ## API
